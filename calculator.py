@@ -2,14 +2,14 @@
 """
 Created on Thu Mar 10 15:31:11 2022
 
-@author: Temitope A. Abdul
+@author: Adeniran J. Olukanni
 """
 
 from postfix_evaluator import PostfixEvaluator
 
 print('--------Welcome to HiQ Basic Python Calculator---------\
-      \nSigns\n+ add\n- subtract\n* multiply\n/ divide\n^ power\
-      \n% modulus\n')
+      \nSigns\n+ add\n- subtract\n* multiply\n/ divide\
+      \n// floor division\n^ power\n% modulus\n')
       
 
 calculator = PostfixEvaluator()

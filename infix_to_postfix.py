@@ -34,7 +34,7 @@ def format_infix(infix):
 
 def is_operator(string):
     """Returns true if the input string arg is an operator, false otherwise."""
-    operator_pat = '[\\+\\-\\*\\/\\%\\^]'
+    operator_pat = '[+*/%^-]'
     return True if re.search(operator_pat, string) else False
 
 
@@ -76,10 +76,11 @@ def to_postfix(formatted_infix):
     if validate_infix(formatted_infix):
         infix_stack = []
 
-        for m in re.finditer('([+*%^/()-])|\\d+(\\.\\d+)?', formatted_infix):
+        for m in re.finditer('([+*%^()-])|(\\/{1,2})|\\d+(\\.\\d+)?', formatted_infix):
             infix_stack += [m.group()]
 
         infix_stack += [')']
+        print('infix-stack: ', infix_stack)
         infix_iter = iter(infix_stack)
 
         stack = []

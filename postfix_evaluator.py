@@ -2,7 +2,7 @@
 """
 Created on Thu Mar 10 14:50:28 2022
 
-@author: Temitope A. Abdul
+@author: Adeniran J. Olukanni
 """
 
 from infix_to_postfix import InfixToPostfix
@@ -15,10 +15,10 @@ def calculate(y, operator, x):
         return y - x
     elif operator == '*':
         return y * x
-    elif operator == '/':
-        return y / x
     elif operator == '//':
         return y // x
+    elif operator == '/':
+        return y / x
     elif operator == '^':
         return y ** x
     elif operator == '%':
