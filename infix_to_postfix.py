@@ -80,7 +80,6 @@ def to_postfix(formatted_infix):
             infix_stack += [m.group()]
 
         infix_stack += [')']
-        print('infix-stack: ', infix_stack)
         infix_iter = iter(infix_stack)
 
         stack = []

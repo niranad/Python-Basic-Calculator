@@ -29,31 +29,32 @@ def evaluate(postfix):
     postfix_stack = postfix.split()
     postfix_stack += [')']
     postfix_iter = iter(postfix_stack)
-    next_str = ''
+    next_str = postfix_iter.__next__()
     eval_stack = []
 
     while next_str != ')':
-        next_str = postfix_iter.__next__()
         if next_str[0].isdigit():
             eval_stack += [float(next_str)]
         else:
-            if len(eval_stack) != 0:  
-                x = eval_stack.pop()
-                if len(eval_stack) == 0:
-                    return x
-                y = eval_stack.pop()
-                eval_stack += [calculate(y, next_str, x)]
+            x = eval_stack.pop()
+            
+            if len(eval_stack) == 0:
+                if next_str != '-' and next_str != '+':
+                    return None
+            
+            y = eval_stack.pop() if len(eval_stack) != 0 else 0
+            eval_stack += [calculate(y, next_str, x)]
+        
+        next_str = postfix_iter.__next__()
 
     return eval_stack.pop()
-
-
-def _format():
-    pass
 
 
 class PostfixEvaluator:
     def __init__(self):
         self.postfix = InfixToPostfix().postfix
         if self.postfix is not None:
-            print('Result: ', evaluate(self.postfix))
-        
+            result = evaluate(self.postfix)
+            print('Result: ', 
+                  result if result is not None else 'Error: incomplete expression')
+            
